@@ -1,0 +1,66 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tasbeh/constants/responsive.dart';
+import 'package:tasbeh/logic/counter/app_counter_cubit.dart';
+import '../../../../config/theme/colors.dart';
+
+class TasbehResetButtonWidget extends StatelessWidget {
+  const TasbehResetButtonWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: Responsive.height(0.34),
+      left: Responsive.width(0.46),
+      child: InkWell(
+        onTap: () {
+          showDialog(
+              context: context,
+              builder: (context) {
+                final isIOS = Theme.of(context).platform == TargetPlatform.iOS;
+                return AlertDialog.adaptive(
+                  title: const Text("Reset Counter"),
+                  content:
+                      const Text("Are you sure you want to reset the counter?"),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text(
+                        "Cancel",
+                        style: TextStyle(
+                            color: isIOS ? MyColors.blue : MyColors.black),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        context.read<AppCounterCubit>().reset();
+                      },
+                      child: Text(
+                        "Reset",
+                        style: TextStyle(
+                            color: isIOS ? MyColors.red : MyColors.black),
+                      ),
+                    ),
+                  ],
+                );
+              });
+        },
+        child: Container(
+          height: Responsive.height(0.05),
+          width: Responsive.width(0.12),
+          decoration: const BoxDecoration(
+            color: MyColors.silver,
+            shape: BoxShape.circle,
+          ),
+          child: const Icon(
+            CupertinoIcons.restart,
+            color: MyColors.black,
+            size: 25,
+          ),
+        ),
+      ),
+    );
+  }
+}
