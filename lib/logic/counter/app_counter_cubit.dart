@@ -8,8 +8,6 @@ import 'package:haptic_feedback/haptic_feedback.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../config/theme/colors.dart';
-
 part 'app_counter_state.dart';
 
 class AppCounterCubit extends Cubit<AppCounterState> {
@@ -28,6 +26,10 @@ class AppCounterCubit extends Cubit<AppCounterState> {
   int get currentRemainder => (state as AppCounterInitial).remainderValue;
 
   int get currentTarget => (state as AppCounterInitial).targetValue;
+
+  String? startValueError;
+  String? remainderValueError;
+  String? targetValueError;
 
   void increment() async {
     if (currentCounter < currentTarget) {
@@ -67,43 +69,39 @@ class AppCounterCubit extends Cubit<AppCounterState> {
         0, isVibrated, isPlayed, currentRemainder, currentTarget));
   }
 
-  void saveRemainderData(
+  Future<void> saveRemainderData(
       String startValue, String remainderValue, String targetValue) async {
-    final start = int.parse(startValue);
-    final remainder = int.parse(remainderValue);
-    final target = int.parse(targetValue);
+    startValueError = null;
+    remainderValueError = null;
+    targetValueError = null;
 
-    if (start < 0 || remainder <= 0 || target < 0) {
-      throw Exception("Invalid values entered");
+    if (int.tryParse(startValue) == null || int.parse(startValue) < 0) {
+      startValueError = "Invalid start value";
+    }
+    if (int.tryParse(remainderValue) == null ||
+        int.parse(remainderValue) <= 0) {
+      remainderValueError = "Invalid remainder value";
+    }
+    if (int.tryParse(targetValue) == null ||
+        int.parse(targetValue) <= 0 ||
+        int.parse(startValue) >= int.parse(targetValue)) {
+      targetValueError = "Invalid target value";
     }
 
-    if (start >= target) {
-      throw Exception("Start value must be less than the Target value");
-    }
-
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt("startValue", start);
-    await prefs.setInt("remainderValue", remainder);
-    await prefs.setInt("targetValue", target);
-
-    emit(AppCounterInitial(start, isVibrated, isPlayed, remainder, target));
-  }
-
-  Future<void> checkInputValidation(BuildContext context, String startValue,
-      String remainderValue, String targetValue) async {
-    try {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Data saved successfully"),
-        backgroundColor: MyColors.darkGreen,
-      ));
-      Navigator.of(context).pop();
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(e.toString()),
-          backgroundColor: Colors.red,
-        ),
-      );
+    if (startValueError != null ||
+        remainderValueError != null ||
+        targetValueError != null) {
+      emit(AppCounterValidationFailed(
+          startValueError, remainderValueError, targetValueError));
+    } else {
+      final start = int.parse(startValue);
+      final remainder = int.parse(remainderValue);
+      final target = int.parse(targetValue);
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setInt("startValue", start);
+      await prefs.setInt("remainderValue", remainder);
+      await prefs.setInt("targetValue", target);
+      emit(AppCounterInitial(start, isVibrated, isPlayed, remainder, target));
     }
   }
 

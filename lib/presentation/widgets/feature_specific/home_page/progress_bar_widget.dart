@@ -21,7 +21,7 @@ class ProgressBarWidget extends StatelessWidget {
         counter = state.counter;
       }
 
-      double progress = counter / target ;
+      double progress = counter / target;
 
       return GestureDetector(
         onTap: () {

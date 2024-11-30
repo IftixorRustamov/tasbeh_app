@@ -52,28 +52,15 @@ class MyModelBottomWidget extends StatelessWidget {
                     color: MyColors.darkGreen,
                     size: 25,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       String startValue = startValueController.text;
                       String remainder = remainderController.text;
                       String targetValue = targetValueController.text;
+
                       context.read<AppCounterCubit>().saveRemainderData(
                           startValue, remainder, targetValue);
-                      try {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text("Data saved successfully"),
-                          backgroundColor: MyColors.darkGreen,
-                        ));
-                        Navigator.of(context).pop();
-                      } catch (e) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(e.toString()),
-                            backgroundColor: Colors.red,
-                          ),
-                        );
-                      }
+                      Navigator.of(context).pop();
                     }
                   },
                 ),
@@ -118,7 +105,10 @@ class MyModelBottomWidget extends StatelessWidget {
               hint: '99',
               controller: targetValueController,
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (value == null ||
+                    value.isEmpty ||
+                    int.parse(value) <
+                        context.read<AppCounterCubit>().currentCounter) {
                   return "Please enter a Target value";
                 }
 
@@ -129,6 +119,23 @@ class MyModelBottomWidget extends StatelessWidget {
               },
             ),
             _sizedBox,
+            BlocBuilder<AppCounterCubit, AppCounterState>(
+              builder: (context, state) {
+                if (state is AppCounterValidationFailed) {
+                  return Column(
+                    children: [
+                      if (state.startValueError != null)
+                        Text(state.startValueError!, style: TextStyle(color: Colors.red)),
+                      if (state.remainderValueError != null)
+                        Text(state.remainderValueError!, style: TextStyle(color: Colors.red)),
+                      if (state.targetValueError != null)
+                        Text(state.targetValueError!, style: TextStyle(color: Colors.red)),
+                    ],
+                  );
+                }
+                return SizedBox.shrink(); // No error message to display
+              },
+            ),
           ],
         ),
       ),

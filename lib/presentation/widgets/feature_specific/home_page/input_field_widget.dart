@@ -29,6 +29,8 @@ class InputFieldReminder extends StatelessWidget {
         const SizedBox(height: 8),
         TextFormField(
           controller: controller,
+          validator: validator,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(color: Colors.grey),
