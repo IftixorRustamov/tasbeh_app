@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:haptic_feedback/haptic_feedback.dart';
 import 'package:hive/hive.dart';
 import 'package:meta/meta.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasbeh/data/models/counter_history.dart';
 
 part 'app_counter_state.dart';
@@ -129,21 +128,10 @@ class AppCounterCubit extends Cubit<AppCounterState> {
             target <= 0 || start >= target ? "Invalid target value" : null),
       );
     }
-    // final start = int.parse(startValue);
-    // final remainder = int.parse(remainderValue);
-    // final target = int.parse(targetValue);
-    // final prefs = await SharedPreferences.getInstance();
-    // await prefs.setInt("startValue", start);
-    // await prefs.setInt("remainderValue", remainder);
-    // await prefs.setInt("targetValue", target);
   }
 
   // load data
   void loadRemainderData() async {
-    // final prefs = await SharedPreferences.getInstance();
-    // final startCache = prefs.getInt("startValue") ?? 0;
-    // final remainderCache = prefs.getInt('remainderValue') ?? 33;
-    // final targetCache = prefs.getInt("targetValue") ?? 1000;
     final startCache = counterBox.get('startValue', defaultValue: 0);
     final remainderCache = counterBox.get("remainderValue", defaultValue: 33);
     final targetCache = counterBox.get('targetValue', defaultValue: 1000);

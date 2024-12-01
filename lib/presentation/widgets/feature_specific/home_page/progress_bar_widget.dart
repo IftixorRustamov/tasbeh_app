@@ -9,6 +9,11 @@ class ProgressBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textColor = theme.textTheme.bodyLarge?.color ?? Colors.white;
+    final progressColor = theme.colorScheme.primary;
+    final backgroundProgressColor = theme.colorScheme.surface;
+
     return BlocBuilder<AppCounterCubit, AppCounterState>(
         builder: (context, state) {
       int remainder = 0;
@@ -29,18 +34,22 @@ class ProgressBarWidget extends StatelessWidget {
               return AlertDialog(
                 title: Text(
                   'Target Reached!',
-                  style: TextStyle(),
+                  style: TextStyle(color: textColor),
                 ),
                 content: Text(
                   'Congratulations 🎉🎉🎉! You have reached your target.',
-                  style: TextStyle(),
+                  style: TextStyle(color: textColor),
                 ),
+                backgroundColor: theme.colorScheme.surface,
                 actions: [
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context); // Close the dialog
                     },
-                    child: Text('OK'),
+                    child: Text(
+                      'OK',
+                      style: TextStyle(color: progressColor),
+                    ),
                   ),
                 ],
               );
@@ -55,7 +64,7 @@ class ProgressBarWidget extends StatelessWidget {
         onTap: () {
           showModalBottomSheet(
             context: context,
-            backgroundColor: MyColors.darkGrey,
+            backgroundColor: theme.colorScheme.surface,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 top: Radius.circular(20),
@@ -68,16 +77,14 @@ class ProgressBarWidget extends StatelessWidget {
           children: [
             Text(
               "Remainder: $remainder",
-              style: const TextStyle(
-                  color: MyColors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500),
+              style: TextStyle(
+                  color: textColor, fontSize: 20, fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: 20),
             LinearProgressIndicator(
               value: progress,
-              color: MyColors.darkGreen,
-              backgroundColor: Colors.grey.shade800,
+              color: progressColor,
+              backgroundColor: backgroundProgressColor,
               minHeight: 7,
             ),
           ],

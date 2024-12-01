@@ -7,13 +7,15 @@ class ShowHistoryButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final iconColor = theme.iconTheme.color ?? Colors.white;
     return IconButton(
       onPressed: () {
         Navigator.of(context).pushNamed('history-page');
       },
-      icon: const Icon(
+      icon: Icon(
         Icons.history,
-        color: MyColors.white,
+        color: iconColor,
         size: 35,
       ),
     );

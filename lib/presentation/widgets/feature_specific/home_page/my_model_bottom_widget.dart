@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbeh/logic/counter/app_counter_cubit.dart';
 
-import '../../../../config/theme/colors.dart';
 import 'input_field_widget.dart';
 
 class MyModelBottomWidget extends StatelessWidget {
@@ -16,6 +15,10 @@ class MyModelBottomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final buttonColor = theme.colorScheme.primary;
+    final textColor = theme.textTheme.bodyLarge?.color ?? Colors.white;
+    final iconColor = theme.iconTheme.color ?? Colors.white;
     return Padding(
       padding: EdgeInsets.only(
         left: 16,
@@ -32,25 +35,25 @@ class MyModelBottomWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.close,
-                      color: Colors.white,
+                      color: iconColor,
                       size: 25,
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
-                  const Text(
+                  Text(
                     "Set Reminder",
                     style: TextStyle(
-                      color: MyColors.white,
+                      color: textColor,
                       fontSize: 19,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.check,
-                      color: MyColors.darkGreen,
+                      color: buttonColor,
                       size: 25,
                     ),
                     onPressed: () async {
@@ -58,7 +61,7 @@ class MyModelBottomWidget extends StatelessWidget {
                         String startValue = startValueController.text;
                         String remainder = remainderController.text;
                         String targetValue = targetValueController.text;
-        
+
                         context.read<AppCounterCubit>().saveRemainderData(
                             startValue, remainder, targetValue);
                         Navigator.of(context).pop();
@@ -76,7 +79,7 @@ class MyModelBottomWidget extends StatelessWidget {
                   if (value == null || value.isEmpty) {
                     return "Please enter a Start Value";
                   }
-        
+
                   if (int.tryParse(value) == null) {
                     return "Please enter a valid number";
                   }
@@ -92,11 +95,12 @@ class MyModelBottomWidget extends StatelessWidget {
                   if (value == null || value.isEmpty) {
                     return "Please enter a Remainder value";
                   }
-        
-                  if (int.tryParse(value) == null || int.tryParse(value)! <= 0) {
+
+                  if (int.tryParse(value) == null ||
+                      int.tryParse(value)! <= 0) {
                     return "Please enter a valid positive number";
                   }
-        
+
                   return null;
                 },
               ),
@@ -112,8 +116,9 @@ class MyModelBottomWidget extends StatelessWidget {
                           context.read<AppCounterCubit>().currentCounter) {
                     return "Please enter a Target value";
                   }
-        
-                  if (int.tryParse(value) == null || int.tryParse(value)! <= 0) {
+
+                  if (int.tryParse(value) == null ||
+                      int.tryParse(value)! <= 0) {
                     return "Please enter a valid positive number";
                   }
                   return null;
@@ -126,15 +131,18 @@ class MyModelBottomWidget extends StatelessWidget {
                     return Column(
                       children: [
                         if (state.startValueError != null)
-                          Text(state.startValueError!, style: TextStyle(color: Colors.red)),
+                          Text(state.startValueError!,
+                              style: TextStyle(color: theme.colorScheme.error)),
                         if (state.remainderValueError != null)
-                          Text(state.remainderValueError!, style: TextStyle(color: Colors.red)),
+                          Text(state.remainderValueError!,
+                              style: TextStyle(color: theme.colorScheme.error)),
                         if (state.targetValueError != null)
-                          Text(state.targetValueError!, style: TextStyle(color: Colors.red)),
+                          Text(state.targetValueError!,
+                              style: TextStyle(color: theme.colorScheme.error)),
                       ],
                     );
                   }
-                  return SizedBox.shrink(); // No error message to display
+                  return const SizedBox.shrink(); // No error message to display
                 },
               ),
             ],

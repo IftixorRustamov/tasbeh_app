@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbeh/logic/counter/app_counter_cubit.dart';
 
+import '../../../../logic/theme_cubit/theme_cubit.dart';
 import '../../common/button_widget.dart';
 
 class HomePageBottomWidget extends StatefulWidget {
@@ -38,7 +39,20 @@ class _HomePageBottomWidgetState extends State<HomePageBottomWidget> {
             ),
 
             // Dark Mode Button
-            ButtonWidget(onPressed: () {}, icon: CupertinoIcons.moon_fill),
+            BlocBuilder<ThemeCubit, ThemeState>(
+              builder: (context, themeState) {
+                final isDarkMode =
+                    themeState is ThemeChanged && themeState.themeData.brightness == Brightness.dark;
+                return ButtonWidget(
+                  onPressed: () {
+                    context.read<ThemeCubit>().toggleTheme();
+                  },
+                  icon: isDarkMode
+                      ? CupertinoIcons.sun_max_fill
+                      : CupertinoIcons.moon_fill,
+                );
+              },
+            ),
           ],
         );
       }),

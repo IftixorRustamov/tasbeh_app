@@ -16,15 +16,26 @@ class InputFieldReminder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final inputFieldColor = theme.brightness == Brightness.dark
+        ? Colors.grey.shade800 // Dark theme background for input field
+        : Colors.white; // Light theme background for input field
+    final hintColor = theme.brightness == Brightness.dark
+        ? Colors.grey // Dark theme hint text color
+        : Colors.grey.shade600; // Light theme hint text color
+    final textColor = theme.brightness == Brightness.dark
+        ? Colors.white // Dark theme text color
+        : MyColors.black; // Light theme text color
+    final borderColor = theme.brightness == Brightness.dark
+        ? Colors.grey.shade600 // Dark theme border color
+        : Colors.grey.shade300; // Light theme border color
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: const TextStyle(
-              color: MyColors.silver,
-              fontSize: 17,
-              fontWeight: FontWeight.w500),
+          style: TextStyle(
+              color: textColor, fontSize: 17, fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: 8),
         TextFormField(
@@ -33,17 +44,17 @@ class InputFieldReminder extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: const TextStyle(color: Colors.grey),
+            hintStyle: TextStyle(color: hintColor),
             filled: true,
-            fillColor: Colors.grey.shade800,
+            fillColor: inputFieldColor,
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none,
+              borderSide: BorderSide(color: borderColor),
             ),
           ),
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: textColor),
           keyboardType: TextInputType.number,
         ),
       ],

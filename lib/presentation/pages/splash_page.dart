@@ -29,8 +29,22 @@ class _SplashPageState extends State<SplashPage>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    final backgroundColor = theme.brightness == Brightness.dark
+        ? MyColors.darkGrey // Dark mode background
+        : MyColors.silver; // Light mode background
+
+    final imageColor = theme.brightness == Brightness.dark
+        ? Colors.white60 // Dark mode image color
+        : MyColors.darkGrey; // Light mode image color
+
+    final progressColor = theme.brightness == Brightness.dark
+        ? MyColors.darkGreen // Dark mode progress color
+        : MyColors.blue; // Light mode progress color
+
     return Scaffold(
-      backgroundColor: MyColors.darkGrey,
+      backgroundColor: backgroundColor,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -40,18 +54,18 @@ class _SplashPageState extends State<SplashPage>
               children: [
                 Image.asset(
                   "assets/images/counter_vector 1.png",
-                  color: Colors.white60,
+                  color: imageColor,
                   width: 160,
                   height: 160,
                 ),
-                const Positioned(
+                Positioned(
                   top: 100,
                   child: SizedBox(
                     width: 40,
                     height: 40,
                     child: CircularProgressIndicator(
-                      color: MyColors.darkGreen,
-                      strokeWidth: 3,
+                      color: progressColor,
+                      strokeWidth: 5,
                     ),
                   ),
                 ),

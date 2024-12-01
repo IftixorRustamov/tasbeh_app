@@ -6,7 +6,14 @@ import 'package:tasbeh/logic/counter/app_counter_cubit.dart';
 import '../../../../config/theme/colors.dart';
 
 class TasbehResetButtonWidget extends StatelessWidget {
-  const TasbehResetButtonWidget({super.key});
+  final Color buttonColor;
+  final Color textColor;
+
+  const TasbehResetButtonWidget({
+    super.key,
+    required this.buttonColor,
+    required this.textColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +57,13 @@ class TasbehResetButtonWidget extends StatelessWidget {
         child: Container(
           height: Responsive.height(0.05),
           width: Responsive.width(0.12),
-          decoration: const BoxDecoration(
-            color: MyColors.silver,
+          decoration: BoxDecoration(
+            color: buttonColor,
             shape: BoxShape.circle,
           ),
-          child: const Icon(
+          child: Icon(
             CupertinoIcons.restart,
-            color: MyColors.black,
+            color: textColor,
             size: 25,
           ),
         ),

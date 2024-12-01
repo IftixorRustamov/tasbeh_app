@@ -10,16 +10,22 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final splashColor = theme.colorScheme.primary;
+    final iconColor = theme.iconTheme.color ?? MyColors.white;
+    final backgroundColor = theme.scaffoldBackgroundColor == MyColors.silver
+        ? Colors.grey.shade800 // Light theme specific background
+        : theme.cardColor;
     return InkWell(
       onTap: onPressed,
       borderRadius: BorderRadius.circular(35),
-      splashColor: MyColors.darkGreen,
+      splashColor: splashColor,
       child: CircleAvatar(
-        backgroundColor: Colors.grey.shade800,
+        backgroundColor: backgroundColor,
         radius: 40,
         child: Icon(
           icon,
-          color: MyColors.white,
+          color: iconColor,
           size: 40,
         ),
       ),

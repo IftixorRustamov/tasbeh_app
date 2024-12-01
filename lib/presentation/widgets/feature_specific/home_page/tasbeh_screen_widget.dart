@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasbeh/config/theme/colors.dart';
 import 'package:tasbeh/constants/responsive.dart';
 import 'package:tasbeh/logic/counter/app_counter_cubit.dart';
 
@@ -9,17 +8,19 @@ class TasbehScreenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final backgroundColor = theme.colorScheme.surface;
+    final textColor = theme.textTheme.bodyLarge?.color;
     return Positioned(
       top: Responsive.height(0.21),
       child: BlocBuilder<AppCounterCubit, AppCounterState>(
         builder: (context, state) {
-
           final counter = (state is AppCounterInitial) ? state.counter : 0;
           return Container(
             height: Responsive.height(0.09),
             width: Responsive.width(0.5),
             decoration: BoxDecoration(
-              color: Colors.white70,
+              color: backgroundColor,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
@@ -28,8 +29,8 @@ class TasbehScreenWidget extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Text(
                   "$counter",
-                  style: const TextStyle(
-                      fontSize:38, fontFamily: "DSEG", color: MyColors.black),
+                  style: TextStyle(
+                      fontSize: 38, fontFamily: "DSEG", color: textColor),
                 ),
               ),
             ),
