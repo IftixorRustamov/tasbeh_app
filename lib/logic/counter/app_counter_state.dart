@@ -16,3 +16,16 @@ final class AppCounterInitial extends AppCounterState {
   @override
   List<Object?> get props => [counter, isVibrated, isPlayed, remainderValue, targetValue];
 }
+
+class AppCounterValidationFailed extends AppCounterState {
+  final String? startValueError;
+  final String? remainderValueError;
+  final String? targetValueError;
+
+  AppCounterValidationFailed(this.startValueError, this.remainderValueError, this.targetValueError);
+
+  @override
+  List<Object?> get props => [startValueError, remainderValueError, targetValueError];
+}
+
+

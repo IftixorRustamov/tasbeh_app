@@ -21,7 +21,35 @@ class ProgressBarWidget extends StatelessWidget {
         counter = state.counter;
       }
 
-      double progress = counter / target ;
+      if (target == counter) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          showAdaptiveDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text(
+                  'Target Reached!',
+                  style: TextStyle(),
+                ),
+                content: Text(
+                  'Congratulations 🎉🎉🎉! You have reached your target.',
+                  style: TextStyle(),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context); // Close the dialog
+                    },
+                    child: Text('OK'),
+                  ),
+                ],
+              );
+            },
+          );
+        });
+      }
+
+      double progress = counter / target;
 
       return GestureDetector(
         onTap: () {

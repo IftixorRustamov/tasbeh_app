@@ -17,36 +17,31 @@ class _HomePageBottomWidgetState extends State<HomePageBottomWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 40),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          // Sound Button
-          BlocBuilder<AppCounterCubit, AppCounterState>(
-            builder: (context, state) {
-              final isPlayed = (state as AppCounterInitial).isPlayed;
-              return ButtonWidget(
-                onPressed: () => context.read<AppCounterCubit>().togglePlayer(),
-                icon: isPlayed ? Icons.volume_up : Icons.volume_off,
-              );
-            },
-          ),
+      child: BlocBuilder<AppCounterCubit, AppCounterState>(
+          builder: (context, state) {
+        final isPlayed = (state as AppCounterInitial).isPlayed;
+        final isVibrated = (state).isVibrated;
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            // Sound Button
+            ButtonWidget(
+              onPressed: () => context.read<AppCounterCubit>().togglePlayer(),
+              icon: isPlayed ? Icons.volume_up : Icons.volume_off,
+            ),
 
-          // Vibration Button
-          BlocBuilder<AppCounterCubit, AppCounterState>(
-            builder: (context, state) {
-              final isVibrated = (state as AppCounterInitial).isVibrated;
-              return ButtonWidget(
-                onPressed: () =>
-                    context.read<AppCounterCubit>().toggleVibration(),
-                icon: isVibrated ? Icons.vibration : Icons.mobile_off,
-              );
-            },
-          ),
+            // Vibration Button
+            ButtonWidget(
+              onPressed: () =>
+                  context.read<AppCounterCubit>().toggleVibration(),
+              icon: isVibrated ? Icons.vibration : Icons.mobile_off,
+            ),
 
-          // Dark Mode Button
-          ButtonWidget(onPressed: () {}, icon: CupertinoIcons.moon_fill),
-        ],
-      ),
+            // Dark Mode Button
+            ButtonWidget(onPressed: () {}, icon: CupertinoIcons.moon_fill),
+          ],
+        );
+      }),
     );
   }
 }
