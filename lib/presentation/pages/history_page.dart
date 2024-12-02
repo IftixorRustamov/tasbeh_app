@@ -14,7 +14,7 @@ class HistoryPage extends StatelessWidget {
     final history = historyBox.values.toList();
 
     final theme = Theme.of(context);
-    final backgroundColor = theme.colorScheme.surface;
+    final backgroundColor = theme.scaffoldBackgroundColor;
     final textColor = theme.textTheme.bodyLarge?.color;
     final cardColor = theme.cardColor;
     final titleColor = theme.textTheme.titleLarge?.color;

@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'counter_history.g.dart';
 
 @HiveType(typeId: 1)
-class CounterHistory {
+class CounterHistory extends HiveObject {
   @HiveField(1)
   int counter;
 

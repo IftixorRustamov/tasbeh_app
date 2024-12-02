@@ -37,11 +37,21 @@ class AppCounterCubit extends Cubit<AppCounterState> {
   // increment counter
   void increment() async {
     checkAndResetDailyCounter();
+    int tempCounterRemainder = 0;
     if (currentCounter < currentTarget) {
       final newCounter = currentCounter + 1;
+      tempCounterRemainder += 1;
       counterBox.put('startValue', newCounter);
       emit(AppCounterInitial(
           newCounter, isVibrated, isPlayed, currentRemainder, currentTarget));
+    }
+
+    if (tempCounterRemainder == currentRemainder) {
+      final canVibrate = await Haptics.canVibrate();
+      if (canVibrate) {
+        await Haptics.vibrate(HapticsType.success);
+      }
+      tempCounterRemainder = 0;
     }
     if (isVibrated) vibrateMyPhone();
     if (isPlayed) playAudio();
@@ -79,6 +89,7 @@ class AppCounterCubit extends Cubit<AppCounterState> {
 
   // reset counter
   void reset() {
+    saveToHistory(currentCounter);
     counterBox.put('startValue', 0);
     emit(AppCounterInitial(
         0, isVibrated, isPlayed, currentRemainder, currentTarget));
@@ -97,7 +108,7 @@ class AppCounterCubit extends Cubit<AppCounterState> {
     // If it's a new day, save last count to history and reset the counter
     if (lastSavedDate != today) {
       if (lastCount > 0) {
-       saveToHistory(lastCount);
+        saveToHistory(lastCount);
       }
       await counterBox.put('startValue', 0); // Reset counter
       await counterBox.put('lastSavedDate', today); // Update saved date

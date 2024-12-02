@@ -28,7 +28,6 @@ class TasbehApp extends StatelessWidget {
 
           return MaterialApp(
             theme: lightTheme,
-            // Your light theme
             darkTheme: darkTheme,
             debugShowCheckedModeBanner: false,
             themeMode: currentTheme.brightness == Brightness.dark

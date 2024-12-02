@@ -7,16 +7,17 @@ final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   scaffoldBackgroundColor: MyColors.silver,
   iconTheme: const IconThemeData(color: MyColors.grey),
-  textTheme: const TextTheme(
+  textTheme: TextTheme(
     bodyLarge: TextStyle(color: MyColors.black),
-    bodyMedium: TextStyle(color: MyColors.black),
+    bodyMedium: TextStyle(color: MyColors.lightGrey),
+    titleMedium: TextStyle(color: MyColors.lightGrey),
     titleLarge: TextStyle(color: MyColors.black),
   ),
   appBarTheme: const AppBarTheme(
     backgroundColor: MyColors.silver,
     iconTheme: IconThemeData(color: MyColors.white),
   ),
-  colorScheme: ColorScheme(
+  colorScheme: const ColorScheme(
     brightness: Brightness.light,
     primary: MyColors.blue,
     onPrimary: MyColors.lightGrey,
@@ -37,14 +38,15 @@ final ThemeData darkTheme = ThemeData(
   iconTheme: const IconThemeData(color: MyColors.white),
   textTheme: const TextTheme(
     bodyLarge: TextStyle(color: MyColors.white),
-    bodyMedium: TextStyle(color: MyColors.white),
+    bodyMedium: TextStyle(color: MyColors.silver),
+    titleMedium: TextStyle(color: MyColors.silver),
     titleLarge: TextStyle(color: MyColors.white),
   ),
   appBarTheme: const AppBarTheme(
     backgroundColor: MyColors.darkGrey,
     iconTheme: IconThemeData(color: MyColors.white),
   ),
-  colorScheme: ColorScheme(
+  colorScheme: const ColorScheme(
     brightness: Brightness.dark,
     primary: MyColors.darkGreen,
     onPrimary: MyColors.silver,
