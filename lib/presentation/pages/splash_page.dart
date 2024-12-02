@@ -31,17 +31,13 @@ class _SplashPageState extends State<SplashPage>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final backgroundColor = theme.brightness == Brightness.dark
-        ? MyColors.darkGrey // Dark mode background
-        : MyColors.silver; // Light mode background
+    final backgroundColor = theme.scaffoldBackgroundColor;
 
     final imageColor = theme.brightness == Brightness.dark
         ? Colors.white60 // Dark mode image color
         : MyColors.darkGrey; // Light mode image color
 
-    final progressColor = theme.brightness == Brightness.dark
-        ? MyColors.darkGreen // Dark mode progress color
-        : MyColors.blue; // Light mode progress color
+    final progressColor = theme.colorScheme.primary;
 
     return Scaffold(
       backgroundColor: backgroundColor,

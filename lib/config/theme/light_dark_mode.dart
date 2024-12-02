@@ -3,52 +3,56 @@ import 'colors.dart';
 
 // Light Theme
 final ThemeData lightTheme = ThemeData(
+  cardColor: MyColors.white,
   brightness: Brightness.light,
   scaffoldBackgroundColor: MyColors.silver,
-  appBarTheme: AppBarTheme(
-    backgroundColor: MyColors.silver,
-    iconTheme: IconThemeData(color: MyColors.white),
-  ),
-  textTheme: TextTheme(
+  iconTheme: const IconThemeData(color: MyColors.grey),
+  textTheme: const TextTheme(
     bodyLarge: TextStyle(color: MyColors.black),
     bodyMedium: TextStyle(color: MyColors.black),
     titleLarge: TextStyle(color: MyColors.black),
   ),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: MyColors.silver,
+    iconTheme: IconThemeData(color: MyColors.white),
+  ),
   colorScheme: ColorScheme(
     brightness: Brightness.light,
     primary: MyColors.blue,
-    onPrimary: MyColors.white,
+    onPrimary: MyColors.lightGrey,
     secondary: MyColors.silver,
     onSecondary: MyColors.black,
     error: MyColors.red,
     onError: MyColors.white,
-    surface: MyColors.silver,
+    surface: MyColors.white,
     onSurface: MyColors.black,
   ),
 );
 
 // Dark Theme
 final ThemeData darkTheme = ThemeData(
+  cardColor: MyColors.lightGrey,
   brightness: Brightness.dark,
-  scaffoldBackgroundColor: MyColors.grey,
-  appBarTheme: AppBarTheme(
-    backgroundColor: MyColors.darkGrey,
-    iconTheme: IconThemeData(color: MyColors.white),
-  ),
-  textTheme: TextTheme(
+  scaffoldBackgroundColor: MyColors.darkGrey,
+  iconTheme: const IconThemeData(color: MyColors.white),
+  textTheme: const TextTheme(
     bodyLarge: TextStyle(color: MyColors.white),
     bodyMedium: TextStyle(color: MyColors.white),
     titleLarge: TextStyle(color: MyColors.white),
   ),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: MyColors.darkGrey,
+    iconTheme: IconThemeData(color: MyColors.white),
+  ),
   colorScheme: ColorScheme(
     brightness: Brightness.dark,
-    primary: Colors.deepOrangeAccent,
-    onPrimary: MyColors.white,
+    primary: MyColors.darkGreen,
+    onPrimary: MyColors.silver,
     secondary: MyColors.lightGrey,
     onSecondary: MyColors.black,
     error: MyColors.red,
     onError: MyColors.white,
-    surface: MyColors.grey,
-    onSurface: MyColors.white,
+    surface: MyColors.lightGrey,
+    onSurface: MyColors.silver,
   ),
 );

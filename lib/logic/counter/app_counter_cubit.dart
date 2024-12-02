@@ -89,7 +89,7 @@ class AppCounterCubit extends Cubit<AppCounterState> {
     historyBox.add(CounterHistory(counter: count, countedDate: DateTime.now()));
   }
 
-  void checkAndResetDailyCounter() {
+  Future<void> checkAndResetDailyCounter() async {
     final today = DateTime.now().toIso8601String().split('T')[0];
     final lastSavedDate = counterBox.get('lastSavedDate', defaultValue: '');
     final lastCount = counterBox.get('startValue', defaultValue: 0);
@@ -97,10 +97,10 @@ class AppCounterCubit extends Cubit<AppCounterState> {
     // If it's a new day, save last count to history and reset the counter
     if (lastSavedDate != today) {
       if (lastCount > 0) {
-        saveToHistory(lastCount);
+       saveToHistory(lastCount);
       }
-      counterBox.put('startValue', 0); // Reset counter
-      counterBox.put('lastSavedDate', today); // Update saved date
+      await counterBox.put('startValue', 0); // Reset counter
+      await counterBox.put('lastSavedDate', today); // Update saved date
     }
   }
 

@@ -7,6 +7,9 @@ class HistoryPageCloseButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final iconColor = theme.iconTheme.color ?? MyColors.white;
+    final buttonColor = theme.cardColor;
     return Row(
       children: [
         const SizedBox(width: 10),
@@ -14,17 +17,19 @@ class HistoryPageCloseButtonWidget extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pop();
           },
+          borderRadius: BorderRadius.circular(30),
+          splashColor: theme.colorScheme.primary,
           child: Container(
             height: 45,
             width: 45,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: MyColors.grey,
+              color: buttonColor,
             ),
-            child: const Icon(
+            child: Icon(
               Icons.close,
               size: 30,
-              color: MyColors.white,
+              color: iconColor,
             ),
           ),
         ),

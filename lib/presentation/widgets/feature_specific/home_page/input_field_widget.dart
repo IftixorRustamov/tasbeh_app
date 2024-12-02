@@ -19,16 +19,16 @@ class InputFieldReminder extends StatelessWidget {
     final theme = Theme.of(context);
     final inputFieldColor = theme.brightness == Brightness.dark
         ? Colors.grey.shade800 // Dark theme background for input field
-        : Colors.white; // Light theme background for input field
+        : MyColors.white; // Light theme background for input field
     final hintColor = theme.brightness == Brightness.dark
-        ? Colors.grey // Dark theme hint text color
+        ? MyColors.grey // Dark theme hint text color
         : Colors.grey.shade600; // Light theme hint text color
     final textColor = theme.brightness == Brightness.dark
-        ? Colors.white // Dark theme text color
+        ? MyColors.white // Dark theme text color
         : MyColors.black; // Light theme text color
     final borderColor = theme.brightness == Brightness.dark
-        ? Colors.grey.shade600 // Dark theme border color
-        : Colors.grey.shade300; // Light theme border color
+        ? MyColors.silver  // Dark theme border color
+        : MyColors.grey; // Light theme border color
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

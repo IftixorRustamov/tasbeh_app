@@ -18,7 +18,8 @@ class HomePage extends StatelessWidget {
     final theme = Theme.of(context);
     final scaffoldBackgroundColor = theme.scaffoldBackgroundColor;
     final appBarBackgroundColor = theme.appBarTheme.backgroundColor;
-    final buttonColor = theme.colorScheme.primary;
+    final circleColor = theme.colorScheme.primary;
+    final buttonColor = theme.colorScheme.onPrimary;
     final textColor = theme.textTheme.bodyLarge?.color ?? Colors.white;
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         leading: const ShowHistoryButtonWidget(),
         backgroundColor: appBarBackgroundColor,
-        title: ProgressBarWidget(),
+        title: const ProgressBarWidget(),
         actions: const [
           SizedBox(width: 50),
         ],
@@ -40,7 +41,7 @@ class HomePage extends StatelessWidget {
               children: [
                 CustomPaint(
                   size: const Size(300, 400),
-                  painter: MyTasbehPainter(circleColor: buttonColor),
+                  painter: MyTasbehPainter(circleColor: circleColor),
                 ),
                 const TasbehScreenWidget(),
                 TasbehResetButtonWidget(

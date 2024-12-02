@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../config/theme/colors.dart';
-
 class ButtonWidget extends StatelessWidget {
   final void Function() onPressed;
   final IconData icon;
@@ -12,13 +10,11 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final splashColor = theme.colorScheme.primary;
-    final iconColor = theme.iconTheme.color ?? MyColors.white;
-    final backgroundColor = theme.scaffoldBackgroundColor == MyColors.silver
-        ? Colors.grey.shade800 // Light theme specific background
-        : theme.cardColor;
+    final iconColor = theme.iconTheme.color;
+    final backgroundColor = theme.cardColor;
     return InkWell(
       onTap: onPressed,
-      borderRadius: BorderRadius.circular(35),
+      borderRadius: BorderRadius.circular(32),
       splashColor: splashColor,
       child: CircleAvatar(
         backgroundColor: backgroundColor,

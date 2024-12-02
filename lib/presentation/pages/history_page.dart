@@ -13,15 +13,22 @@ class HistoryPage extends StatelessWidget {
     final historyBox = Hive.box<CounterHistory>('historyBox');
     final history = historyBox.values.toList();
 
+    final theme = Theme.of(context);
+    final backgroundColor = theme.colorScheme.surface;
+    final textColor = theme.textTheme.bodyLarge?.color;
+    final cardColor = theme.cardColor;
+    final titleColor = theme.textTheme.titleLarge?.color;
+    final subtitleColor = theme.textTheme.titleMedium?.color;
+
     return Scaffold(
-      backgroundColor: MyColors.darkGrey,
+      backgroundColor: backgroundColor,
       appBar: AppBar(
-        backgroundColor: MyColors.darkGrey,
+        backgroundColor: backgroundColor,
         leading: const HistoryPageCloseButtonWidget(),
-        title: const Text(
+        title: Text(
           "History",
           style: TextStyle(
-            color: MyColors.white,
+            color: titleColor,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
@@ -37,21 +44,22 @@ class HistoryPage extends StatelessWidget {
                 final formattedDate = "${date.day}/${date.month}/${date.year}";
                 return Container(
                   margin: const EdgeInsets.only(bottom: 10),
-                  decoration: const BoxDecoration(
-                      color: MyColors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  decoration: BoxDecoration(
+                      color: cardColor,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(15))),
                   child: ListTile(
                     title: Text(
                       "Count: ${record.counter}",
                       style: TextStyle(
-                        color: MyColors.white,
+                        color: textColor,
                         fontWeight: FontWeight.w500,
                         fontSize: 16,
                       ),
                     ),
                     subtitle: Text(
                       "Date: $formattedDate",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16, color: subtitleColor),
                     ),
                   ),
                 );
@@ -59,7 +67,7 @@ class HistoryPage extends StatelessWidget {
           : Center(
               child: Text(
                 "No History Available yet",
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(color: textColor, fontSize: 16),
               ),
             ),
     );
