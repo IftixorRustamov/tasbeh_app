@@ -49,7 +49,7 @@ final ThemeData darkTheme = ThemeData(
   colorScheme: const ColorScheme(
     brightness: Brightness.dark,
     primary: MyColors.darkGreen,
-    onPrimary: MyColors.silver,
+    onPrimary: MyColors.lightGrey,
     secondary: MyColors.lightGrey,
     onSecondary: MyColors.black,
     error: MyColors.red,

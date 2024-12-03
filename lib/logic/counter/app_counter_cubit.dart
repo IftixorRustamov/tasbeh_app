@@ -33,11 +33,12 @@ class AppCounterCubit extends Cubit<AppCounterState> {
   String? startValueError;
   String? remainderValueError;
   String? targetValueError;
+  int tempCounterRemainder = 0;
 
   // increment counter
   void increment() async {
     checkAndResetDailyCounter();
-    int tempCounterRemainder = 0;
+
     if (currentCounter < currentTarget) {
       final newCounter = currentCounter + 1;
       tempCounterRemainder += 1;
@@ -48,9 +49,11 @@ class AppCounterCubit extends Cubit<AppCounterState> {
 
     if (tempCounterRemainder == currentRemainder) {
       final canVibrate = await Haptics.canVibrate();
-      if (canVibrate) {
-        await Haptics.vibrate(HapticsType.success);
+      if (canVibrate!) {
+        await Haptics.vibrate(HapticsType.rigid);
+        await Future.delayed(const Duration(seconds: 4));
       }
+
       tempCounterRemainder = 0;
     }
     if (isVibrated) vibrateMyPhone();

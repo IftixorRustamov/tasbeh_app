@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasbeh/config/theme/colors.dart';
 import 'package:tasbeh/logic/counter/app_counter_cubit.dart';
 import 'package:tasbeh/presentation/widgets/feature_specific/home_page/my_model_bottom_widget.dart';
+
+import '../../../../constants/responsive.dart';
 
 class ProgressBarWidget extends StatelessWidget {
   const ProgressBarWidget({super.key});
@@ -46,10 +47,7 @@ class ProgressBarWidget extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context); // Close the dialog
                     },
-                    child: Text(
-                      'OK',
-                      style: TextStyle(color: progressColor),
-                    ),
+                    child: Text('OK', style: TextStyle(color: progressColor)),
                   ),
                 ],
               );
@@ -57,12 +55,11 @@ class ProgressBarWidget extends StatelessWidget {
           );
         });
       }
-
       double progress = counter / target;
-
       return GestureDetector(
         onTap: () {
           showModalBottomSheet(
+            isScrollControlled: true,
             context: context,
             backgroundColor: theme.colorScheme.surface,
             shape: const RoundedRectangleBorder(
@@ -70,7 +67,7 @@ class ProgressBarWidget extends StatelessWidget {
                 top: Radius.circular(20),
               ),
             ),
-            builder: (context) => MyModelBottomWidget(),
+            builder: (context) => const MyModelBottomWidget(),
           );
         },
         child: Column(
@@ -78,14 +75,19 @@ class ProgressBarWidget extends StatelessWidget {
             Text(
               "Remainder: $remainder",
               style: TextStyle(
-                  color: textColor, fontSize: 20, fontWeight: FontWeight.w500),
+                  color: textColor,
+                  fontSize: Responsive.height(0.028),
+                  fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: 20),
-            LinearProgressIndicator(
-              value: progress,
-              color: progressColor,
-              backgroundColor: backgroundProgressColor,
-              minHeight: 7,
+            SizedBox(
+              width: Responsive.width(0.7),
+              child: LinearProgressIndicator(
+                value: progress,
+                color: progressColor,
+                backgroundColor: backgroundProgressColor,
+                minHeight: Responsive.height(0.01),
+              ),
             ),
           ],
         ),

@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:tasbeh/data/models/counter_history.dart';
 import 'package:tasbeh/presentation/widgets/feature_specific/history_page/history_page_close_button_widget.dart';
 
-import '../../config/theme/colors.dart';
+import '../../constants/responsive.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
@@ -29,7 +29,7 @@ class HistoryPage extends StatelessWidget {
           "History",
           style: TextStyle(
             color: titleColor,
-            fontSize: 24,
+            fontSize: Responsive.width(0.06),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -37,13 +37,13 @@ class HistoryPage extends StatelessWidget {
       body: history.isNotEmpty
           ? ListView.builder(
               itemCount: history.length,
-              padding: const EdgeInsets.all(15),
+              padding: EdgeInsets.all(Responsive.width(0.04)),
               itemBuilder: (context, index) {
                 final record = history[index];
                 final date = record.countedDate.toLocal();
                 final formattedDate = "${date.day}/${date.month}/${date.year}";
                 return Container(
-                  margin: const EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: Responsive.height(0.02)),
                   decoration: BoxDecoration(
                       color: cardColor,
                       borderRadius:
@@ -54,12 +54,14 @@ class HistoryPage extends StatelessWidget {
                       style: TextStyle(
                         color: textColor,
                         fontWeight: FontWeight.w500,
-                        fontSize: 16,
+                        fontSize: Responsive.width(0.04),
                       ),
                     ),
                     subtitle: Text(
                       "Date: $formattedDate",
-                      style: TextStyle(fontSize: 16, color: subtitleColor),
+                      style: TextStyle(
+                          fontSize: Responsive.width(0.04),
+                          color: subtitleColor),
                     ),
                   ),
                 );
@@ -67,7 +69,7 @@ class HistoryPage extends StatelessWidget {
           : Center(
               child: Text(
                 "No History Available yet",
-                style: TextStyle(color: textColor, fontSize: 16),
+                style: TextStyle(color: textColor, fontSize: Responsive.width(0.04)),
               ),
             ),
     );

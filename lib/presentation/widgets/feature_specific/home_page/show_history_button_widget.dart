@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../config/theme/colors.dart';
+import '../../../../constants/responsive.dart';
 
 class ShowHistoryButtonWidget extends StatelessWidget {
   const ShowHistoryButtonWidget({super.key});
@@ -16,7 +16,7 @@ class ShowHistoryButtonWidget extends StatelessWidget {
       icon: Icon(
         Icons.history,
         color: iconColor,
-        size: 35,
+        size: Responsive.width(0.08),
       ),
     );
   }

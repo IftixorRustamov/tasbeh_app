@@ -41,8 +41,8 @@ class _HomePageBottomWidgetState extends State<HomePageBottomWidget> {
             // Dark Mode Button
             BlocBuilder<ThemeCubit, ThemeState>(
               builder: (context, themeState) {
-                final isDarkMode =
-                    themeState is ThemeChanged && themeState.themeData.brightness == Brightness.dark;
+                final isDarkMode = themeState is ThemeChanged &&
+                    themeState.themeData.brightness == Brightness.dark;
                 return ButtonWidget(
                   onPressed: () {
                     context.read<ThemeCubit>().toggleTheme();

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../constants/responsive.dart';
+
 class ButtonWidget extends StatelessWidget {
   final void Function() onPressed;
   final IconData icon;
@@ -18,11 +20,11 @@ class ButtonWidget extends StatelessWidget {
       splashColor: splashColor,
       child: CircleAvatar(
         backgroundColor: backgroundColor,
-        radius: 40,
+        radius: Responsive.height(0.053),
         child: Icon(
           icon,
           color: iconColor,
-          size: 40,
+          size: Responsive.height(0.046),
         ),
       ),
     );

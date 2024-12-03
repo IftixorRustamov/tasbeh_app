@@ -11,14 +11,14 @@ class TasbehCountButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: Responsive.height(0.4),
+      top: Responsive.height(0.41),
       left: Responsive.width(0.21),
       child: InkWell(
         onTap: () {
           context.read<AppCounterCubit>().increment();
         },
         child: Container(
-          height: Responsive.height(0.15),
+          height: Responsive.height(0.16),
           width: Responsive.width(0.3),
           decoration: BoxDecoration(
             color: buttonColor,

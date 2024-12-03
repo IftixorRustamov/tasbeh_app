@@ -8,8 +8,7 @@ class MyTasbehPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()..style = PaintingStyle.fill;
-
-    paint.color = circleColor; // Yellow color
+    paint.color = circleColor;
 
     final outerPath = Path()
       ..moveTo(size.width * 0.5, 0) // Center top

@@ -55,7 +55,7 @@ class TasbehResetButtonWidget extends StatelessWidget {
               });
         },
         child: Container(
-          height: Responsive.height(0.05),
+          height: Responsive.height(0.06),
           width: Responsive.width(0.12),
           decoration: BoxDecoration(
             color: buttonColor,
@@ -64,7 +64,7 @@ class TasbehResetButtonWidget extends StatelessWidget {
           child: Icon(
             CupertinoIcons.restart,
             color: textColor,
-            size: 25,
+            size: Responsive.width(0.06),
           ),
         ),
       ),

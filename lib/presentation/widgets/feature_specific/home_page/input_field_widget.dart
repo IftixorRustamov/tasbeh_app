@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:tasbeh/config/theme/colors.dart';
+import 'package:tasbeh/constants/responsive.dart';
 
 class InputFieldReminder extends StatelessWidget {
   final String label;
   final String hint;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final FocusNode focusNode;
 
   const InputFieldReminder(
       {super.key,
       required this.label,
       required this.hint,
       required this.controller,
-      required this.validator});
+      required this.validator,
+      required this.focusNode});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class InputFieldReminder extends StatelessWidget {
         ? MyColors.white // Dark theme text color
         : MyColors.black; // Light theme text color
     final borderColor = theme.brightness == Brightness.dark
-        ? MyColors.silver  // Dark theme border color
+        ? MyColors.silver // Dark theme border color
         : MyColors.grey; // Light theme border color
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,13 +38,14 @@ class InputFieldReminder extends StatelessWidget {
         Text(
           label,
           style: TextStyle(
-              color: textColor, fontSize: 17, fontWeight: FontWeight.w500),
+              color: textColor, fontSize: Responsive.width(0.027), fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: 8),
         TextFormField(
           controller: controller,
           validator: validator,
           autovalidateMode: AutovalidateMode.onUserInteraction,
+          focusNode: focusNode,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: TextStyle(color: hintColor),

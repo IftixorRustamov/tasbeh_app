@@ -12,12 +12,12 @@ class TasbehScreenWidget extends StatelessWidget {
     final backgroundColor = theme.colorScheme.surface;
     final textColor = theme.textTheme.bodyLarge?.color;
     return Positioned(
-      top: Responsive.height(0.21),
+      top: Responsive.height(0.17),
       child: BlocBuilder<AppCounterCubit, AppCounterState>(
         builder: (context, state) {
           final counter = (state is AppCounterInitial) ? state.counter : 0;
           return Container(
-            height: Responsive.height(0.09),
+            height: Responsive.height(0.1),
             width: Responsive.width(0.5),
             decoration: BoxDecoration(
               color: backgroundColor,
@@ -30,7 +30,7 @@ class TasbehScreenWidget extends StatelessWidget {
                 child: Text(
                   "$counter",
                   style: TextStyle(
-                      fontSize: 38, fontFamily: "DSEG", color: textColor),
+                      fontSize: Responsive.width(0.08), fontFamily: "DSEG", color: textColor),
                 ),
               ),
             ),

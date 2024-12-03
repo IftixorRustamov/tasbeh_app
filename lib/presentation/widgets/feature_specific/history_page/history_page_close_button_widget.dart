@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../config/theme/colors.dart';
+import '../../../../constants/responsive.dart';
 
 class HistoryPageCloseButtonWidget extends StatelessWidget {
   const HistoryPageCloseButtonWidget({super.key});
@@ -20,15 +21,15 @@ class HistoryPageCloseButtonWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           splashColor: theme.colorScheme.primary,
           child: Container(
-            height: 45,
-            width: 45,
+            height: Responsive.height(0.05),
+            width: Responsive.height(0.05),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: buttonColor,
             ),
             child: Icon(
               Icons.close,
-              size: 30,
+              size: Responsive.height(0.04),
               color: iconColor,
             ),
           ),

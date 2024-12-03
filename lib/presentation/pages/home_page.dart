@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 CustomPaint(
-                  size: const Size(300, 400),
+                  size: Size(Responsive.width(0.7), Responsive.height(0.5)),
                   painter: MyTasbehPainter(circleColor: circleColor),
                 ),
                 const TasbehScreenWidget(),
