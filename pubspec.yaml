@@ -43,19 +43,28 @@ dependencies:
   shared_preferences: ^2.3.3
   hive: ^2.2.3
   hive_flutter:
+  rename_app: ^1.6.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator:
   build_runner:
+  flutter_launcher_icons: "^0.14.1"
+  flutter_lints: ^4.0.0
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

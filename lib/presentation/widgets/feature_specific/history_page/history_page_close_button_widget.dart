@@ -13,7 +13,7 @@ class HistoryPageCloseButtonWidget extends StatelessWidget {
     final buttonColor = theme.cardColor;
     return Row(
       children: [
-        const SizedBox(width: 10),
+        const SizedBox(width: 6),
         InkWell(
           onTap: () {
             Navigator.of(context).pop();
@@ -29,7 +29,7 @@ class HistoryPageCloseButtonWidget extends StatelessWidget {
             ),
             child: Icon(
               Icons.close,
-              size: Responsive.height(0.04),
+              size: Responsive.height(0.035),
               color: iconColor,
             ),
           ),
