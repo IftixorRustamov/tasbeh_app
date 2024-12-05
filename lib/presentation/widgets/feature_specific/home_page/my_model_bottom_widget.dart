@@ -57,12 +57,17 @@ class _MyModelBottomWidgetState extends State<MyModelBottomWidget> {
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
-                  Text(
-                    "Set Reminder".tr(),
-                    style: TextStyle(
-                      color: textColor,
-                      fontSize: Responsive.height(0.028),
-                      fontWeight: FontWeight.bold,
+                  SizedBox(
+                    width: 270, // Set a fixed or flexible width
+                    child: Text(
+                      "Set Reminder".tr(),
+                      style: TextStyle(
+                        color: textColor,
+                        fontSize: Responsive.height(0.028),
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   IconButton(
