@@ -1,0 +1,22 @@
+{
+  "History": "Tarix",
+  "Count:": "Hisob: {count}",
+  "Date": "Sana: {date}",
+  "No History Available yet": "Hali tarix mavjud emas",
+  "Target Reached": "Maqsadga erishildi",
+  "Reset Counter": "Hisoblagichni qaytadan boshlash",
+  "Are you sure you want to reset the counter": "Hisoblagichni noldan boshlashga ishonchingiz komilmi?",
+  "Cancel" : "Orqaga",
+  "Reset" : "Qaytarish",
+  "Set Reminder": "Eslatman O'rnatish",
+  "Start Value": "Boshlang'ich qiymat",
+  "Please enter a Start Value": "boshlang'ich  qiymat kiriting",
+  "Please enter a valid number": "Asosli raqam kiriting",
+  "Remainder": "Eslatma",
+  "Please enter a Remainder value": "Eslatma uchun qiymat kiriting",
+  "Please enter a valid positive number": "Asosli musbat raqam kiriting",
+  "Target Value": "Maqsad qiymat",
+  "Please enter a Target value": "Maqsad qiymat kiriting",
+  "congrats": "Tabriklaymiz 🎉🎉🎉! Siz maqsadingizga erishdingiz.",
+  "str_remainder" : "Eslatma: {remainder}"
+}

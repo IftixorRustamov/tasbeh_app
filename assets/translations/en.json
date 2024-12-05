@@ -1,0 +1,22 @@
+{
+  "History": "History",
+  "Count:": "Count: {count}",
+  "Date": "Date: {date}",
+  "No History Available yet": "No History Available yet",
+  "Target Reached": "Target Reached!",
+  "Reset Counter": "Reset Counter",
+  "Are you sure you want to reset the counter": "Are you sure you want to reset the counter?",
+  "Cancel": "Cancel",
+  "Reset": "Reset",
+  "Set Reminder": "Set Reminder",
+  "Start Value": "Start Value",
+  "Please enter a Start Value": "Please enter a Start Value",
+  "Please enter a valid number": "Please enter a valid number",
+  "Reminder": "Remainder",
+  "Please enter a Remainder value": "Please enter a Remainder value",
+  "Please enter a valid positive number": "Please enter a valid positive number",
+  "Target Value": "Target Value",
+  "Please enter a Target value": "Please enter a Target value",
+  "congrats": "Congratulations 🎉🎉🎉! You have reached your target.",
+  "str_remainder" : "Reminder: {remainder}"
+}

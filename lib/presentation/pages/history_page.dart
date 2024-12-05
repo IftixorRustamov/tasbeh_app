@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:tasbeh/data/models/counter_history.dart';
@@ -26,7 +27,7 @@ class HistoryPage extends StatelessWidget {
         backgroundColor: backgroundColor,
         leading: const HistoryPageCloseButtonWidget(),
         title: Text(
-          "History",
+          "History".tr(),
           style: TextStyle(
             color: titleColor,
             fontSize: Responsive.width(0.06),
@@ -45,12 +46,14 @@ class HistoryPage extends StatelessWidget {
                 return Container(
                   margin: EdgeInsets.only(bottom: Responsive.height(0.02)),
                   decoration: BoxDecoration(
-                      color: cardColor,
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(15))),
+                    color: cardColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  ),
                   child: ListTile(
                     title: Text(
-                      "Count: ${record.counter}",
+                      "Count:".tr(
+                          namedArgs: {"count": record.counter.toString()},
+                          context: context),
                       style: TextStyle(
                         color: textColor,
                         fontWeight: FontWeight.w500,
@@ -58,7 +61,7 @@ class HistoryPage extends StatelessWidget {
                       ),
                     ),
                     subtitle: Text(
-                      "Date: $formattedDate",
+                      "Date".tr(namedArgs: {'date': formattedDate}),
                       style: TextStyle(
                           fontSize: Responsive.width(0.04),
                           color: subtitleColor),
@@ -68,8 +71,9 @@ class HistoryPage extends StatelessWidget {
               })
           : Center(
               child: Text(
-                "No History Available yet",
-                style: TextStyle(color: textColor, fontSize: Responsive.width(0.04)),
+                "No History Available yet".tr(),
+                style: TextStyle(
+                    color: textColor, fontSize: Responsive.width(0.04)),
               ),
             ),
     );

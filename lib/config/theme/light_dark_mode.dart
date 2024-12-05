@@ -26,7 +26,7 @@ final ThemeData lightTheme = ThemeData(
     error: MyColors.red,
     onError: MyColors.white,
     surface: MyColors.white,
-    onSurface: MyColors.black,
+    onSurface: MyColors.darkGrey,
   ),
 );
 

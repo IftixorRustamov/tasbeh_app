@@ -20,7 +20,7 @@ class ButtonWidget extends StatelessWidget {
       splashColor: splashColor,
       child: CircleAvatar(
         backgroundColor: backgroundColor,
-        radius: Responsive.height(0.053),
+        radius: Responsive.height(0.045),
         child: Icon(
           icon,
           color: iconColor,

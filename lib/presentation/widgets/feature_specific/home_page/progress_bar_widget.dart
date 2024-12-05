@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbeh/logic/counter/app_counter_cubit.dart';
+import 'package:tasbeh/main.dart';
 import 'package:tasbeh/presentation/widgets/feature_specific/home_page/my_model_bottom_widget.dart';
 
 import '../../../../constants/responsive.dart';
@@ -34,11 +36,11 @@ class ProgressBarWidget extends StatelessWidget {
             builder: (context) {
               return AlertDialog(
                 title: Text(
-                  'Target Reached!',
+                  'Target Reached!'.tr(),
                   style: TextStyle(color: textColor),
                 ),
                 content: Text(
-                  'Congratulations 🎉🎉🎉! You have reached your target.',
+                  'congrats'.tr(),
                   style: TextStyle(color: textColor),
                 ),
                 backgroundColor: theme.colorScheme.surface,
@@ -73,7 +75,8 @@ class ProgressBarWidget extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Remainder: $remainder",
+              "str_remainder"
+                  .tr(namedArgs: {"remainder": remainder.toString()}),
               style: TextStyle(
                   color: textColor,
                   fontSize: Responsive.height(0.028),

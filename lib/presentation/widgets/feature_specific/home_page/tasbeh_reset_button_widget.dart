@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,14 +28,15 @@ class TasbehResetButtonWidget extends StatelessWidget {
               builder: (context) {
                 final isIOS = Theme.of(context).platform == TargetPlatform.iOS;
                 return AlertDialog.adaptive(
-                  title: const Text("Reset Counter"),
+                  title: Text(context.tr("Reset Counter")),
                   content:
-                      const Text("Are you sure you want to reset the counter?"),
+                      const Text("Are you sure you want to reset the counter?")
+                          .tr(),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
                       child: Text(
-                        "Cancel",
+                        "Cancel".tr(),
                         style: TextStyle(
                             color: isIOS ? MyColors.blue : MyColors.black),
                       ),
@@ -45,7 +47,7 @@ class TasbehResetButtonWidget extends StatelessWidget {
                         context.read<AppCounterCubit>().reset();
                       },
                       child: Text(
-                        "Reset",
+                        "Reset".tr(),
                         style: TextStyle(
                             color: isIOS ? MyColors.red : MyColors.black),
                       ),

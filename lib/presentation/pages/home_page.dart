@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasbeh/presentation/widgets/feature_specific/home_page/home_page_bottom_widget.dart';
+import 'package:tasbeh/presentation/widgets/feature_specific/home_page/language_selector_widget.dart';
 import 'package:tasbeh/presentation/widgets/feature_specific/home_page/show_history_button_widget.dart';
 import 'package:tasbeh/presentation/widgets/feature_specific/home_page/tasbeh_count_button_widget.dart';
 import 'package:tasbeh/presentation/widgets/feature_specific/home_page/tasbeh_reset_button_widget.dart';
@@ -29,7 +30,11 @@ class HomePage extends StatelessWidget {
         backgroundColor: appBarBackgroundColor,
         title: const ProgressBarWidget(),
         actions: const [
-          SizedBox(width: 50),
+          Padding(
+            padding:  EdgeInsets.only(right: 12.0),
+            // Add padding to the right
+            child: LanguageSelector(),
+          ),
         ],
       ),
       body: Column(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbeh/logic/counter/app_counter_cubit.dart';
@@ -57,7 +58,7 @@ class _MyModelBottomWidgetState extends State<MyModelBottomWidget> {
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   Text(
-                    "Set Reminder",
+                    "Set Reminder".tr(),
                     style: TextStyle(
                       color: textColor,
                       fontSize: Responsive.height(0.028),
@@ -86,35 +87,35 @@ class _MyModelBottomWidgetState extends State<MyModelBottomWidget> {
               ),
               _sizedBox,
               InputFieldReminder(
-                label: "Start Value",
+                label: "Start Value".tr(),
                 hint: '0',
                 focusNode: startValueFocusNode,
                 controller: startValueController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Please enter a Start Value";
+                    return "Please enter a Start Value".tr();
                   }
 
                   if (int.tryParse(value) == null) {
-                    return "Please enter a valid number";
+                    return "Please enter a valid number".tr();
                   }
                   return null;
                 },
               ),
               _sizedBox,
               InputFieldReminder(
-                label: "Remainder",
+                label: "Reminder".tr(),
                 focusNode: remainderFocusNode,
                 hint: '33',
                 controller: remainderController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return "Please enter a Remainder value";
+                    return "Please enter a Remainder value".tr();
                   }
 
                   if (int.tryParse(value) == null ||
                       int.tryParse(value)! <= 0) {
-                    return "Please enter a valid positive number";
+                    return "Please enter a valid positive number".tr();
                   }
 
                   return null;
@@ -122,7 +123,7 @@ class _MyModelBottomWidgetState extends State<MyModelBottomWidget> {
               ),
               _sizedBox,
               InputFieldReminder(
-                label: "Target Value",
+                label: "Target Value".tr(),
                 focusNode: targetValueFocusNode,
                 hint: '99',
                 controller: targetValueController,
@@ -131,12 +132,12 @@ class _MyModelBottomWidgetState extends State<MyModelBottomWidget> {
                       value.isEmpty ||
                       int.parse(value) <
                           context.read<AppCounterCubit>().currentCounter) {
-                    return "Please enter a Target value";
+                    return "Please enter a Target value".tr();
                   }
 
                   if (int.tryParse(value) == null ||
                       int.tryParse(value)! <= 0) {
-                    return "Please enter a valid positive number";
+                    return "Please enter a valid positive number".tr();
                   }
                   return null;
                 },
