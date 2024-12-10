@@ -50,35 +50,14 @@ This Android app is a simple and intuitive Tasbih (prayer beads) counter designe
 * **If you are distributing the app through an app store:** 
     - Include instructions on how to download and install the app from the store.
 
-**Building and Running (if applicable):**
-
-* If you are open-sourcing the code:
-    - Include instructions on how to clone the repository, set up the development environment, and build and run the app on an emulator or physical device.
 
 **Contributing:**
 
 Contributions are welcome! Please feel free to fork this repository and submit a pull request with your improvements. 
 
-**Guidelines for contributors:**
-
-* Follow the existing code style and formatting.
-* Write clear and concise commit messages.
-* Add unit tests for any new features or bug fixes.
-
-**License:**
-
-This project is licensed under the [Choose a License - e.g., MIT License]. See the LICENSE file for details.
 
 **Contact:**
+iftixorrustamovv@gmail.com
 
-[Your Name] - [Your Email Address]
-
-**Future Plans (Optional):**
-
-* Add reminders for prayer times.
-* Support for different prayer types (e.g., Dhikr, Tasbeeh).
-* Cloud syncing to save prayer history across devices.
-* Add customization options (e.g., background colors, themes).
-* Implement accessibility features (e.g., larger font sizes, voice input).
 
 This README provides a comprehensive overview of your Tasbih Counter app. Feel free to further customize it to fit your specific needs and preferences.
